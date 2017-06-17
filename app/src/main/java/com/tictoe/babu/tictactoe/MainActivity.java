@@ -1,21 +1,29 @@
 package com.tictoe.babu.tictactoe;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    int turn;
+    int turn, xwins = 0, owins = 0;
+    boolean flag;
     Button b1,b2,b3,b4,b5,b6,b7,b8,b9;
+
+    TextView textO, textX;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         turn = 1;
+        flag = true;
         b1 = (Button) findViewById(R.id.b1);
         b2 = (Button) findViewById(R.id.b2);
         b3 = (Button) findViewById(R.id.b3);
@@ -26,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
         b7 = (Button) findViewById(R.id.b7);
         b8 = (Button) findViewById(R.id.b8);
         b9 = (Button) findViewById(R.id.b9);
+
+        textO = (TextView) findViewById(R.id.scoreO);
+        textX = (TextView) findViewById(R.id.scoreX);
+        textX.setTextColor(getResources().getColor(R.color.green));
+        textO.setTextColor(getResources().getColor(R.color.red));
+
+        textX.setText("X wins: " + xwins);
+        textO.setText("O wins: " + owins);
+
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +153,11 @@ public class MainActivity extends AppCompatActivity {
         if(g == h && g == i && g != "") {
             declareResuld(g);
         }
+        if(a != "" && b != "" && c != "" && d != "" &&
+                e != "" && f != "" && g != "" && h != ""
+                && i != ""){
+            declareFoul();
+        }
     }
 
     void  reset(){
@@ -161,12 +183,60 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void declareResuld(String str){
-        if(str.equals("X")){
-            Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
-        }else if(str.equals("O")){
-            Toast.makeText(MainActivity.this, "Winner Player O!", Toast.LENGTH_LONG).show();
+    void declareFoul(){
+        String msg = "Foul !!";
+        AlertDialog.Builder winPopUp = new AlertDialog.Builder(MainActivity.this)
+                .setMessage(msg)
+                .setPositiveButton("ok",null)
+                .setNegativeButton("cancel", null)
+                .setCancelable(false);
+
+        AlertDialog alert = winPopUp.create();
+        alert.show();
+        if(flag){
+            textO.setTextColor(getResources().getColor(R.color.green));
+            textX.setTextColor(getResources().getColor(R.color.red));
+            flag = false;
+        }else{
+            textX.setTextColor(getResources().getColor(R.color.green));
+            textO.setTextColor(getResources().getColor(R.color.red));
+            flag = true;
         }
+        reset();
+    }
+
+    void declareResuld(String str){
+
+        String msg = "Winner Player is " + str + "!!";
+        AlertDialog.Builder winPopUp = new AlertDialog.Builder(MainActivity.this)
+                .setMessage(msg)
+                .setPositiveButton("ok",null)
+                .setNegativeButton("cancel", null)
+                .setCancelable(false);
+
+        AlertDialog alert = winPopUp.create();
+        alert.show();
+
+        if(str == "X"){
+            xwins++;
+        }else {
+            owins++;
+        }
+        textX.setText("X wins: " + xwins);
+        textO.setText("O wins: " + owins);
+
+        if(flag){
+            textO.setTextColor(getResources().getColor(R.color.green));
+            textX.setTextColor(getResources().getColor(R.color.red));
+            flag = false;
+        }else{
+            textX.setTextColor(getResources().getColor(R.color.green));
+            textO.setTextColor(getResources().getColor(R.color.red));
+            flag = true;
+        }
+
+        //Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
+
         reset();
     }
 
@@ -174,11 +244,15 @@ public class MainActivity extends AppCompatActivity {
         if(b.getText().toString().equals("")){
             if(turn == 1){
                 b.setText("X");
-                b.setBackgroundColor(getResources().getColor(R.color.red));
+                textO.setTextColor(getResources().getColor(R.color.green));
+                textX.setTextColor(getResources().getColor(R.color.red));
+                //b.setBackgroundColor(getResources().getColor(R.color.red));
                 turn = 2;
             }else{
                 b.setText("O");
-                b.setBackgroundColor(getResources().getColor(R.color.green));
+                textX.setTextColor(getResources().getColor(R.color.green));
+                textO.setTextColor(getResources().getColor(R.color.red));
+                //b.setBackgroundColor(getResources().getColor(R.color.green));
                 turn = 1;
             }
             b.setEnabled(false);

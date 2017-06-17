@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="0dp"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
-    android:paddingTop="0dp"
+    android:paddingBottom="2dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:paddingTop="2dp"
     android:orientation="vertical"
-    android:weightSum="3"
+    android:weightSum="4"
     tools:context="com.tictoe.babu.tictactoe.MainActivity">
 
     <LinearLayout
@@ -93,6 +93,29 @@
             android:textSize="72dp"/>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/scoreO"
+            android:layout_width="199dp"
+            android:layout_height="match_parent"
+            android:textSize="24dp"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/scoreX"
+            android:layout_width="195dp"
+            android:layout_height="match_parent"
+            android:textSize="24dp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
 
