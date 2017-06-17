@@ -30,171 +30,63 @@ public class MainActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b1.getText().toString().equals("")){
-                    if(turn == 1){
-                        b1.setText("X");
-                        b1.setBackgroundColor(getResources().getColor(R.color.red));
-                        turn = 2;
-                    }else{
-                        b1.setText("O");
-                        b1.setBackgroundColor(getResources().getColor(R.color.green));
-                        turn = 1;
-                    }
-                    b1.setEnabled(false);
-                }
-                endGame();
+                onButtonClick(b1);
             }
         });
 
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b2.getText().toString().equals("")){
-                    if(turn == 1){
-                        b2.setText("X");
-                        b2.setBackgroundColor(getResources().getColor(R.color.red));
-                        turn = 2;
-                    }else{
-                        b2.setText("O");
-                        b2.setBackgroundColor(getResources().getColor(R.color.green));
-                        turn = 1;
-                    }
-                    b2.setEnabled(false);
-                }
-                endGame();
+                onButtonClick(b2);
             }
         });
 
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b3.getText().toString().equals("")){
-                    if(turn == 1){
-                        b3.setText("X");
-                        b3.setBackgroundColor(getResources().getColor(R.color.red));
-                        turn = 2;
-                    }else{
-                        b3.setText("O");
-                        b3.setBackgroundColor(getResources().getColor(R.color.green));
-                        turn = 1;
-                    }
-                    b3.setEnabled(false);
-                }
-                endGame();
+                onButtonClick(b3);
             }
         });
 
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b4.getText().toString().equals("")){
-                    if(turn == 1){
-                        b4.setText("X");
-                        b4.setBackgroundColor(getResources().getColor(R.color.red));
-                        turn = 2;
-                    }else{
-                        b4.setText("O");
-                        b4.setBackgroundColor(getResources().getColor(R.color.green));
-                        turn = 1;
-                    }
-                    b4.setEnabled(false);
-                }
-                endGame();
+                onButtonClick(b4);
             }
         });
 
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b5.getText().toString().equals("")){
-                    if(turn == 1){
-                        b5.setText("X");
-                        b5.setBackgroundColor(getResources().getColor(R.color.red));
-                        turn = 2;
-                    }else{
-                        b5.setText("O");
-                        b5.setBackgroundColor(getResources().getColor(R.color.green));
-                        turn = 1;
-                    }
-                    b5.setEnabled(false);
-                }
-                endGame();
+                onButtonClick(b5);
             }
         });
 
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b6.getText().toString().equals("")){
-                    if(turn == 1){
-                        b6.setText("X");
-                        b6.setBackgroundColor(getResources().getColor(R.color.red));
-                        turn = 2;
-                    }else{
-                        b6.setText("O");
-                        b6.setBackgroundColor(getResources().getColor(R.color.green));
-                        turn = 1;
-                    }
-                    b6.setEnabled(false);
-                }
-                endGame();
+                onButtonClick(b6);
             }
         });
 
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b7.getText().toString().equals("")){
-                    if(turn == 1){
-                        b7.setText("X");
-                        b7.setBackgroundColor(getResources().getColor(R.color.red));
-                        turn = 2;
-                    }else{
-                        b7.setText("O");
-                        b7.setBackgroundColor(getResources().getColor(R.color.green));
-                        turn = 1;
-                    }
-                    b7.setEnabled(false);
-                }
-                endGame();
+                onButtonClick(b7);
             }
         });
 
         b8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b8.getText().toString().equals("")){
-                    if(turn == 1){
-                        b8.setText("X");
-                        b8.setBackgroundColor(getResources().getColor(R.color.red));
-                        turn = 2;
-                    }else{
-                        b8.setText("O");
-                        b8.setBackgroundColor(getResources().getColor(R.color.green));
-                        turn = 1;
-                    }
-                    b8.setEnabled(false);
-                }
-                endGame();
+                onButtonClick(b8);
             }
         });
 
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(b9.getText().toString().equals("")){
-                    if(turn == 1){
-                        b9.setText("X");
-                        b9.setBackgroundColor(getResources().getColor(R.color.red));
-                        turn = 2;
-                    }else{
-                        b9.setText("O");
-                        b9.setBackgroundColor(getResources().getColor(R.color.green));
-                        turn = 1;
-                    }
-                    b9.setEnabled(false);
-                }
-                endGame();
+                onButtonClick(b9);
             }
         });
 
@@ -216,91 +108,34 @@ public class MainActivity extends AppCompatActivity {
         h = b8.getText().toString();
         i = b9.getText().toString();
 
-        if(a == b && a == c){
-            if(a.equals("X")){
-                Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
-            }else if(a.equals("O")){
-                Toast.makeText(MainActivity.this, "Winner Player O!", Toast.LENGTH_LONG).show();
-            }
-            if(!a.equals("")){
-                reset();
-            }
+        if(a == b && a == c && a != ""){
+            declareResuld(a);
         }
-        if(a == e && a == i){
-            if(a.equals("X")){
-                Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
-            }else if(a.equals("O")){
-                Toast.makeText(MainActivity.this, "Winner Player O!", Toast.LENGTH_LONG).show();
-            }
-            if(!a.equals("")){
-                reset();
-            }
+        if(a == e && a == i && a != ""){
+            declareResuld(a);
         }
-        if(a == d && a == g){
-            if(a.equals("X")){
-                Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
-            }else if(a.equals("O")){
-                Toast.makeText(MainActivity.this, "Winner Player O!", Toast.LENGTH_LONG).show();
-            }
-            if(!a.equals("")){
-                reset();
-            }
+        if(a == d && a == g && a != ""){
+            declareResuld(a);
         }
 
-        if(b == e && b == h){
-            if(b.equals("X")){
-                Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
-            }else if(b.equals("O")){
-                Toast.makeText(MainActivity.this, "Winner Player O!", Toast.LENGTH_LONG).show();
-            }
-            if(!b.equals("")){
-                reset();
-            }
+        if(b == e && b == h && b != ""){
+            declareResuld(b);
         }
 
-        if(c == e && c == g){
-            if(c.equals("X")){
-                Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
-            }else if(c.equals("O")){
-                Toast.makeText(MainActivity.this, "Winner Player O!", Toast.LENGTH_LONG).show();
-            }
-            if(!c.equals("")){
-                reset();
-            }
+        if(c == e && c == g && c != ""){
+            declareResuld(c);
         }
-        if(c == f && c == i){
-            if(c.equals("X")){
-                Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
-            }else if(c.equals("O")){
-                Toast.makeText(MainActivity.this, "Winner Player O!", Toast.LENGTH_LONG).show();
-            }
-            if(!c.equals("")){
-                reset();
-            }
+        if(c == f && c == i && c != ""){
+            declareResuld(c);
         }
 
-        if(d == e && d == f){
-            if(d.equals("X")){
-                Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
-            }else if(d.equals("O")){
-                Toast.makeText(MainActivity.this, "Winner Player O!", Toast.LENGTH_LONG).show();
-            }
-            if(!d.equals("")){
-                reset();
-            }
+        if(d == e && d == f && d != ""){
+            declareResuld(d);
         }
 
-        if(g == h && g == i){
-            if(g.equals("X")){
-                Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
-            }else if(g.equals("O")){
-                Toast.makeText(MainActivity.this, "Winner Player O!", Toast.LENGTH_LONG).show();
-            }
-            if(!g.equals("")){
-                reset();
-            }
+        if(g == h && g == i && g != "") {
+            declareResuld(g);
         }
-
     }
 
     void  reset(){
@@ -324,5 +159,30 @@ public class MainActivity extends AppCompatActivity {
         b8.setEnabled(true);
         b9.setEnabled(true);
 
+    }
+
+    void declareResuld(String str){
+        if(str.equals("X")){
+            Toast.makeText(MainActivity.this, "Winner Player X!", Toast.LENGTH_LONG).show();
+        }else if(str.equals("O")){
+            Toast.makeText(MainActivity.this, "Winner Player O!", Toast.LENGTH_LONG).show();
+        }
+        reset();
+    }
+
+    void onButtonClick(Button b){
+        if(b.getText().toString().equals("")){
+            if(turn == 1){
+                b.setText("X");
+                b.setBackgroundColor(getResources().getColor(R.color.red));
+                turn = 2;
+            }else{
+                b.setText("O");
+                b.setBackgroundColor(getResources().getColor(R.color.green));
+                turn = 1;
+            }
+            b.setEnabled(false);
+        }
+        endGame();
     }
 }
